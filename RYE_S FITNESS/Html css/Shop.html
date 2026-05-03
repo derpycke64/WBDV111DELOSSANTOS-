@@ -8,11 +8,12 @@
     <title>Rye Fitness Gym RF</title>
 </head>
 <body>
-     <div class="Full-section">
+    <div class="Full-section">
+
         <nav class="Navbar">
             <div class="Gym">
                 <div class="Gym-logo">
-                    <img src="../images/Logo.jpg" alt="Logo" width="100">
+                   <a href="index.html"><img src="../images/Logo.jpg" alt="Logo" width="100"></a> 
                 </div>
                 <div class="Gym-text">
                     <div class="Gym-title">Rye Fitness</div>
@@ -21,82 +22,222 @@
             </div>
 
             <div class="Navbar-links">
-                <a class="Navbar-link" href="index.html">Why Join?</a>
-                <a class="Navbar-link" href="Community.html">Community</a>
+                <a class="Navbar-link" href="Aboutus.html">Why Join?</a>
                 <a class="Navbar-link" href="Training.html">Get Started</a>
                 <a class="Navbar-link" href="Shop.html">Merchandise</a>
             </div>
-
             <div class="Rightnav-buttons">
-                <a class="Rbutton-link" href="Register.html">JOIN NOW</a>
-                <a class="Rbutton-link" href="Training.html">TRY US</a>
+                <a class="Rbutton-link" href="Login.html">JOIN NOW</a>
+                <a class="Rbutton-link" href="Membership.html">TRY US</a>
             </div>
         </nav>
-        <div class="merchandise-page">
-      <section class="merch-hero">
-        <h1 class="page-title">Merchandise</h1>
-        <p class="page-subtitle">Gear up with Rye Fitness official products</p>
-      </section>
-
-      <section class="merch-content">
-        <div class="filter-section">
-          <h3>Filter by Category</h3>
-          <div class="filter-buttons">
-            <button class="filter-btn active">All Products</button>
-            <button class="filter-btn">Apparel</button>
-            <button class="filter-btn">Accessories</button>
-            <button class="filter-btn">Equipment</button>
-          </div>
-        </div>
-
-        <div class="products-grid">
-          <div class="product-card">
-            <div class="product-image">
-              <img src="https://images.unsplash.com/photo-1523438097911-512782516f69?w=400&h=300&fit=crop" alt="Gym Apparel" />
+        <div class="Shop-banner">
+                <div class="Shop-banner-text">
+                    <h1>MERCHANDISE</h1>
+                    <p>Gear up. Train hard. Represent Rye.</p>
+                </div>
+                <div class="Shop-banner-line"></div>
             </div>
-            <div class="product-info">
-              <h3>Rye Fitness T-Shirt</h3>
-              <p class="product-price">$29.99</p>
-              <button class="add-to-cart-btn">Add to Cart</button>
+            
+            <div class="Shop-filter-bar">
+                <button class="Shop-filter-btn active" onclick="filterProducts('all', this)">All</button>
+                <button class="Shop-filter-btn" onclick="filterProducts('clothing', this)">Clothing</button>
+                <button class="Shop-filter-btn" onclick="filterProducts('accessories', this)">Accessories</button>
+                <button class="Shop-filter-btn" onclick="filterProducts('equipment', this)">Equipment</button>
+                <button class="Shop-filter-btn" onclick="filterProducts('drinks', this)">Drinks</button>
             </div>
-          </div>
-          
-          <div class="product-card">
-            <div class="product-image">
-              <img src="https://images.unsplash.com/photo-1572521335131-5b6b9d32b966?w=400&h=300&fit=crop" alt="Water Bottle" />
+            
+            <div class="Shop-page">
+                <div class="Shop-grid-wrapper">
+                    <div class="Shop-grid" id="shop-grid">
+            
+                        <div class="Shop-card" data-category="clothing">
+                            <span class="Shop-card-badge badge-new">NEW</span>
+                            <div class="Shop-card-image">👕</div>
+                            <div class="Shop-card-info">
+                                <div class="Shop-card-name">Gym T-Shirt</div>
+                                <div class="Shop-card-price">$25</div>
+                                <button class="Shop-add-btn" onclick="addToCart(this, 'Gym T-Shirt', 25)">ADD TO CART</button>
+                            </div>
+                        </div>
+            
+                        <div class="Shop-card" data-category="drinks">
+                            <span class="Shop-card-badge badge-sale">SALE</span>
+                            <div class="Shop-card-image">🍶</div>
+                            <div class="Shop-card-info">
+                                <div class="Shop-card-name">Water Bottle</div>
+                                <div class="Shop-card-price">$15 <span class="original-price">$22</span></div>
+                                <button class="Shop-add-btn" onclick="addToCart(this, 'Water Bottle', 15)">ADD TO CART</button>
+                            </div>
+                        </div>
+            
+                        <div class="Shop-card" data-category="accessories">
+                            <div class="Shop-card-image">🎒</div>
+                            <div class="Shop-card-info">
+                                <div class="Shop-card-name">Gym Bag</div>
+                                <div class="Shop-card-price">$45</div>
+                                <button class="Shop-add-btn" onclick="addToCart(this, 'Gym Bag', 45)">ADD TO CART</button>
+                            </div>
+                        </div>
+            
+                        <div class="Shop-card" data-category="equipment">
+                            <span class="Shop-card-badge badge-popular">POPULAR</span>
+                            <div class="Shop-card-image">🏋️</div>
+                            <div class="Shop-card-info">
+                                <div class="Shop-card-name">Resistance Bands</div>
+                                <div class="Shop-card-price">$20</div>
+                                <button class="Shop-add-btn" onclick="addToCart(this, 'Resistance Bands', 20)">ADD TO CART</button>
+                            </div>
+                        </div>
+            
+                        <div class="Shop-card" data-category="clothing">
+                            <div class="Shop-card-image">🧥</div>
+                            <div class="Shop-card-info">
+                                <div class="Shop-card-name">Hoodie</div>
+                                <div class="Shop-card-price">$50</div>
+                                <button class="Shop-add-btn" onclick="addToCart(this, 'Hoodie', 50)">ADD TO CART</button>
+                            </div>
+                        </div>
+            
+                        <div class="Shop-card" data-category="clothing">
+                            <span class="Shop-card-badge badge-new">NEW</span>
+                            <div class="Shop-card-image">🧢</div>
+                            <div class="Shop-card-info">
+                                <div class="Shop-card-name">Cap</div>
+                                <div class="Shop-card-price">$18</div>
+                                <button class="Shop-add-btn" onclick="addToCart(this, 'Cap', 18)">ADD TO CART</button>
+                            </div>
+                        </div>
+            
+                        <div class="Shop-card" data-category="equipment">
+                            <div class="Shop-card-image">🧤</div>
+                            <div class="Shop-card-info">
+                                <div class="Shop-card-name">Lifting Gloves</div>
+                                <div class="Shop-card-price">$22</div>
+                                <button class="Shop-add-btn" onclick="addToCart(this, 'Lifting Gloves', 22)">ADD TO CART</button>
+                            </div>
+                        </div>
+            
+                        <div class="Shop-card" data-category="drinks">
+                            <span class="Shop-card-badge badge-popular">POPULAR</span>
+                            <div class="Shop-card-image">⚡</div>
+                            <div class="Shop-card-info">
+                                <div class="Shop-card-name">Energy Drink Pack</div>
+                                <div class="Shop-card-price">$30</div>
+                                <button class="Shop-add-btn" onclick="addToCart(this, 'Energy Drink Pack', 30)">ADD TO CART</button>
+                            </div>
+                        </div>
+            
+                        <div class="Shop-card" data-category="accessories">
+                            <div class="Shop-card-image">📿</div>
+                            <div class="Shop-card-info">
+                                <div class="Shop-card-name">Wrist Wraps</div>
+                                <div class="Shop-card-price">$16</div>
+                                <button class="Shop-add-btn" onclick="addToCart(this, 'Wrist Wraps', 16)">ADD TO CART</button>
+                            </div>
+                        </div>
+            
+                    </div>
+                </div>
+            
+                <!-- CART -->
+                <div class="Shop-cart">
+                    <div class="Shop-cart-title">
+                        Shopping Cart
+                        <span class="Shop-cart-count" id="cart-count">0</span>
+                    </div>
+                    <div class="Shop-cart-divider"></div>
+                    <div id="cart-items-wrapper">
+                        <p class="Shop-cart-empty" id="cart-empty">0 items • $0.00</p>
+                        <div class="Shop-cart-items" id="cart-items"></div>
+                    </div>
+                    <div class="Shop-cart-divider"></div>
+                    <div class="Shop-cart-total">
+                        <span>Total</span>
+                        <span id="cart-total">$0.00</span>
+                    </div>
+                    <button class="Shop-viewcart-btn">VIEW CART</button>
+                    <button class="Shop-checkout-btn">CHECKOUT →</button>
+                </div>
             </div>
-            <div class="product-info">
-              <h3>Sports Water Bottle</h3>
-              <p class="product-price">$24.99</p>
-              <button class="add-to-cart-btn">Add to Cart</button>
+            
+            <div class="Shop-toast" id="shop-toast"></div>
+        <section class="Getstarted-section">
+            <div class="Getstarted-header">
+                <h1>Get Started Today</h1>
             </div>
-          </div>
-
-          <div class="product-card">
-            <div class="product-image">
-              <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=400&h=300&fit=crop" alt="Gym Bag" />
+            <div class="Getstarted-buttons">
+                <div class="Getstarted-button">
+                    <a href="Login.html">Join Us</a>
+                </div>
+                <div class="Getstarted-button">
+                    <a href="Shop.html">Shop</a>
+                </div>
+                <div class="Getstarted-button">
+                    <a href="#">Gym near you</a>
+                </div>
+                <div>
+                    <div class="Getstarted-description">*Classic memberships begin at &#8369;500.00 and Black Card memberships begin at &#8369;750.00, billed monthly. 
+                        Memberships may include 12-month commitment. State and local taxes may apply.
+                        Prices may vary depending on location. Services and perks subject to availability and restrictions. 
+                        Must be at least 18 years old to enroll, or 13-17 with parent/guardian. Participating locations only. 
+                        Locations independently owned and operated. We reserve the right to correct pricing errors 
+                        or withdraw offer at any time. ©2026 Rye Fitness Franchising LL
+                    </div>
+                </div>
             </div>
-            <div class="product-info">
-              <h3>Gym Duffel Bag</h3>
-              <p class="product-price">$49.99</p>
-              <button class="add-to-cart-btn">Add to Cart</button>
+        </section>
+        <footer class="footer">
+            <div class="footer-content">
+            <div class="footer-column">
+                <h3>Rye Fitness Center</h3>
+                <p>Transform your body, transform your life.</p>
+                <div class="social-links">
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">Twitter</a>
+                </div>
             </div>
-          </div>
-
-          <div class="product-card">
-            <div class="product-image">
-              <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400&h=300&fit=crop" alt="Resistance Bands" />
+            <div class="footer-column">
+                <h4>Quick Links</h4>
+                <a href="#">Home</a>
+                <a href="Community.html">Community</a>
+                <a href="Training.html">Get Started</a>
+                <a href="Shop.html">Shop</a>
             </div>
-            <div class="product-info">
-              <h3>Resistance Bands Set</h3>
-              <p class="product-price">$34.99</p>
-              <button class="add-to-cart-btn">Add to Cart</button>
+            <div class="footer-column">
+                <h4>Contact</h4>
+                <p>Email: info@ryefitness.com</p>
+                <p>Phone: (555) 123-4567</p>
+                <p>Address: 123 Fitness Ave, Your City</p>
             </div>
-          </div>
-        </div>
-      </section>
+            <div class="footer-column">
+                <h4>Hours</h4>
+                <p>Monday - Friday: 24/7</p>
+                <p>Saturday - Sunday: 24/7</p>
+                <p>We're always open!</p>
+            </div>
+            </div>
+            <div class="footer-bottom">
+            <p>&copy; 2026 Rye Fitness Center. All rights reserved.</p>
+            </div>
+        </footer>
     </div>
-    </div>
+    <script>
+        let lastScrollTop = 0;
+        const navbar = document.querySelector('.Navbar');
+
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > lastScrollTop) {
+                navbar.classList.add('hidden');
+            } else {
+                navbar.classList.remove('hidden');
+            }
+            
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; 
+        }, false);
+    </script>
 </body>
-
 </html>
