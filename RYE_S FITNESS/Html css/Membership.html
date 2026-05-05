@@ -245,11 +245,10 @@
             if (selectionBarPosition <= 0) {
                 secondaryNavbar.classList.add('visible');
                 if (scrollTop > lastScrollTop) {
-                    // Scrolling DOWN — hide main navbar, secondary sits at top
+
                     navbar.classList.add('hidden');
                     secondaryNavbar.classList.remove('pushed');
                 } else {
-                    // Scrolling UP — show main navbar, push secondary down below it
                     navbar.classList.remove('hidden');
                     secondaryNavbar.classList.add('pushed');
                 }
