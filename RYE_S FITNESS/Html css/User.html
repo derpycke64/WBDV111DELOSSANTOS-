@@ -3,12 +3,364 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <title>Rye Fitness Gym RFE</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="Full-section">
 
+        <nav class="Navbar">
+            <div class="Gym">
+                <div class="Gym-logo">
+                   <a href="User.html"><img src="../images/Logo.jpg" alt="Logo" width="100"></a> 
+                </div>
+                <div class="Gym-text">
+                    <div class="Gym-title">Rye Fitness</div>
+                    <div class="Gym-subtitle">Center</div>
+                </div>
+            </div>
 
+            <div class="Navbar-links">
+                <a class="Navbar-link" href="User-community.html">Community</a>
+                <a class="Navbar-link" href="User-Dashboard.html">Dashboard</a>
+                <a class="Navbar-link" href="User-shop.html">Merchandise</a>
+                <a class="Navbar-link" href="User-profile.html">Profile</a>
+                <a class="Navbar-link" href="User-membership.html">Membership</a>
+            </div>
 
+            <div class="Rightnav-buttons">
+                <a class="Rbutton-link" href="index.html">Log Out</a>
+            </div>
+        </nav>
+        <section User-page>
+            <div class="User-container-header">
+                <div class="User-profile-img">
+                    <a href="Profile.html"><img src="../images/OsakaAnimePNG.webp" alt="userprofilepic"></a>
+                </div>
+                <div class="User-header-content">
+                    <h2>Welcome Back, <span>Sata Andagi!</span></h2>
+                    <p>Ready to work hard and crush your goals today?</p>
+                </div>
+                <div class="User-header-buttons">
+                        <a href="#"><button class="User-header-button">Check in</button></a>
+                        <a href="User-community.html"><button class="User-header-button">Book Class</button></a>
+                        <a href="User-dashboard.html"><button class="User-header-button">View Schedule</button></a>
+                </div>
+            </div>
+            <div class="User-home-stats-header">Progress so far...</div>
+            <div class="User-home-stats">
+                <div class="User-home-stat">
+                    <div class="User-home-stat-icon">
+                        🏋️
+                    </div>
+                    <div class="User-home-stat-content">
+                        <h2>12</h2>
+                        <p>Workouts this month</p>
+                    </div>
+                </div>
+                <div class="User-home-stat">
+                    <div class="User-home-stat-icon">
+                        ⏱️
+                    </div>
+                    <div class="User-home-stat-content">
+                        <h2>18hrs</h2>
+                        <p>Total Time</p>
+                    </div>
+                </div>
+                <div class="User-home-stat">
+                    <div class="User-home-stat-icon">
+                        🌱
+                    </div>
+                    <div  class="User-home-stat-content">
+                        <h2>30%</h2>
+                        <p>Goal Progress</p>
+                    </div>
+                </div>
+                <div class="User-home-stat">
+                    <div class="User-home-stat-icon"> 
+                        🔥
+                    </div>
+                    <div class="User-home-stat-content">
+                        <h2>7</h2>
+                        <p>day streak</p>
+                    </div>
+                </div>
+            </div>
+            <div></div>
+        </section>
+        <section class="User-main-content">
+            <div class="Content-left">
+                <div class="Upcoming-classes-box">
+                    <div class="Upcoming-classes-content">
+                        <h2>Upcoming Classes</h2>
+                        <a href="User-community.html"><button>View all</button></a>
+                    </div>
+                    <div class="Class-list">
+                        <div class="Class-item">
+                            <div class="Class-time">
+                                <span class="time">9:00 AM</span>
+                                <span class="date">Today</span>
+                            </div>
+                            <div class="Class-details">
+                                <h4>U/L</h4>
+                                <p>with Coach Quinto</p>
+                            </div>
+                            <button class="Class-btn">Join</button>
+                        </div>
 
+                        <div class="Class-item">
+                            <div class="Class-time">
+                                <span class="time">5:30 PM</span>
+                                <span class="date">Today</span>
+                            </div>
+                            <div class="Class-details">
+                                <h4>Yoga Flow</h4>
+                                <p>with Coach Ty Lee</p>
+                            </div>
+                            <button class="Class-btn">Join</button>
+                        </div>
+
+                        <div class="Class-item">
+                            <div class="Class-time">
+                                <span class="time">7:00 AM</span>
+                                <span class="date">Tomorrow</span>
+                            </div>
+                            <div class="Class-details">
+                                <h4>Spin Class</h4>
+                                <p>with Coach Tyson Granger</p>
+                            </div>
+                            <button class="Class-btn">Book</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="Recent-activity-box">
+                    <h2>Recent Activity</h2>
+                    <div class="Activity-list">
+                        <div class="Activity-item">
+                            <div class="Activity-icon">💪</div>
+                            <div class="Activity-info">
+                                <h4>Strength Training</h4>
+                                <p>Yesterday • 45 minutes</p>
+                            </div>
+                        </div>
+                        <div class="Activity-item">
+                            <div class="Activity-icon">🏃</div>
+                            <div class="Activity-info">
+                                <h4>Cardio Session</h4>
+                                <p>2 days ago • 30 minutes</p>
+                            </div>
+                        </div>
+                        <div class="Activity-item">
+                            <div class="Activity-icon">😴</div>
+                            <div class="Activity-info">
+                                <h4>PPL</h4>
+                                <p>1 week ago • 3 hours</p>
+                            </div>
+                        </div>
+                        <div class="Activity-item">
+                            <div class="Activity-icon">🏃</div>
+                            <div class="Activity-info">
+                                <h4>Cardio</h4>
+                                <p>1 week ago • 2 hours</p>
+                            </div>
+                        </div>
+                        <div class="Activity-item">
+                            <div class="Activity-icon">💃🏻🕺🏽</div>
+                            <div class="Activity-info">
+                                <h4>Zumba Class</h4>
+                                <p>2 weeks ago • 2 hours</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="Content-right">
+                <div class="goals-box">
+                    <h2>Your Goals</h2>
+                    <div class="goal-item">
+                        <div class="goal-header">
+                            <h4>Weight Loss</h4>
+                            <span>75%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 75%"></div>
+                        </div>
+                        <p>7.5 lbs of 10 lbs goal</p>
+                    </div>
+
+                    <div class="goal-item">
+                        <div class="goal-header">
+                            <h4>Monthly Workouts</h4>
+                            <span>60%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 60%"></div>
+                        </div>
+                        <p>12 of 20 workouts</p>
+                    </div>
+
+                    <div class="goal-item">
+                        <div class="goal-header">
+                            <h4>Running Distance</h4>
+                            <span>85%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 85%"></div>
+                        </div>
+                        <p>42.5 of 50 miles</p>
+                    </div>
+                    <div class="goal-item">
+                        <div class="goal-header">
+                            <h4>Add Goal</h4>
+                            <a href="User-dashboard.html" style="text-decoration: none;"><span style="cursor: pointer;">✚</span></a>
+                        </div>
+                        <div class="progress-bar">
+                        </div>
+                        <p>Overcome a New Challenge...</p>
+                    </div>
+                </div>
+
+                <div class="trainer-box">
+                    <h2>Your Trainer</h2>
+                    <div class="trainer-card">
+                        <div class="trainer-avatar"><img src="../images/tumblr_b2a990e0a3d629861452cb178391a186_9b947880_540.jpg" alt="trainerpicture"></div>
+                        <div class="trainer-info">
+                            <h3>Aph El Turee</h3>
+                            <p>Certified Personal Trainer</p>
+                            <button class="message-btn">Send Message</button>
+                        </div>
+                    </div>
+                    <div class="trainer-card">
+                        <div class="trainer-avatar"><img src="../images/images.jfif" alt=""></div>
+                        <div class="trainer-info">
+                            <h3>Bass Da Da Da</h3>
+                            <p>Professional jumper || Nays fighto boy</p>
+                            <button class="message-btn">Send Message</button>
+                        </div>
+                    </div>
+                    <div class="trainer-card">
+                       <a href="User-community.html" style="text-decoration: none; color: grey;"><div class="trainer-avatar">✚</div></a>
+                        <div class="trainer-info">
+                            <h3>Add Trainer</h3>
+                            <br>
+                            <a href="User-community.html"><button class="message-btn">Find Trainer</button></a>
+                        </div>
+                    </div>
+                    
+                </div>
+        </section>
+        <section class="Trending-posts-section">
+            <div class="Trending-posts-title">
+                <h2>Trending Posts..</h2>
+                <a href="User-community.html"><button>View All Posts</button></a>
+            </div>
+            <div class="Trending-posts-box">
+                <div class="Trending-post">
+                    <div class="Trending-post-header">
+                        <div class="Trending-post-profileimg">
+                            <img src="../images/1763339896601-4fb0dbca-d499-4fed-ba2a-c6f0ea267982.jpeg" alt="profilepic">
+                        </div>
+                        <div class="Trending-post-profilename">
+                            <h2>David Goggins</h2>
+                            <span>@DavidG</span>
+                            <p>2h ago</p>
+                        </div>
+                    </div>
+                    <div class="Trending-post-maincontent">
+                        Literally just ran around the entire length of Africa. THEY DON'T KNOW ME SON.
+                    </div>
+                    <div class="Trending-post-mediabuttons">
+                        <button>❤️6.7M</button>
+                        <button>COMMENT</button>
+                    </div>
+                </div>
+                <div class="Trending-post">
+                    <div class="Trending-post-header">
+                        <div class="Trending-post-profileimg">
+                            <img src="../images/ST-CLAVICULAR-01-bpkt-articleLarge.webp" alt="profilepic">
+                        </div>
+                        <div class="Trending-post-profilename">
+                            <h2>Clavicular</h2>
+                            <span>@Clavicul4r</span>
+                            <p>2h ago</p>
+                        </div>
+                    </div>
+                    <div class="Trending-post-maincontent">
+                        Off to the gym to mog some LTNs, this is why you should do looksmaxxing. BP is real. 🗿 🤫🧏‍♂️
+                    </div>
+                    <div class="Trending-post-mediabuttons">
+                        <button>❤️2M</button>
+                        <button>COMMENT</button>
+                    </div>
+                </div>
+            </div>
+            <div class="announcements-box">
+                    <h2>Announcements</h2>
+                    <div class="announcement-item">
+                        <h4>🎉 New Equipment Arriving!</h4>
+                        <p>Check out our new squat racks next week</p>
+                    </div>
+                    <div class="announcement-item">
+                        <h4>💧 Stay Hydrated</h4>
+                        <p>Don't forget to bring your water bottle</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer class="Footer">
+            <div class="Footer-content">
+            <div class="Footer-column">
+                <h3>Rye Fitness Center</h3>
+                <p>Transform your body, transform your life.</p>
+                <div class="Social-links">
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">Twitter</a>
+                </div>
+            </div>
+            <div class="Footer-column">
+                <h4>Quick Links</h4>
+                <a href="User.html">Home</a>
+                <a href="User-community.html">Community</a>
+                <a href="User-membership.html">Membership</a>
+                <a href="User-shop.html">Shop</a>
+            </div>
+            <div class="Footer-column">
+                <h4>Contact</h4>
+                <p>Email: info@ryefitness.com</p>
+                <p>Phone: (555) 123-4567</p>
+                <p>Address: 123 Fitness Ave, Your City</p>
+            </div>
+            <div class="Footer-column">
+                <h4>Hours</h4>
+                <p>Monday - Friday: 24/7</p>
+                <p>Saturday - Sunday: 24/7</p>
+                <p>We're always open!</p>
+            </div>
+            </div>
+            <div class="Footer-bottom">
+            <p>&copy; 2026 Rye Fitness Center. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+    <script>
+        let lastScrollTop = 0;
+        const navbar = document.querySelector('.Navbar');
+
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > lastScrollTop) {
+                navbar.classList.add('hidden');
+            } else {
+                navbar.classList.remove('hidden');
+            }
+            
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; 
+        }, false);
+    </script>
 </body>
 </html>

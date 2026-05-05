@@ -102,10 +102,8 @@
 
                 <p style="color:#888; font-size:12px; margin-top:5px;">Quick fill a test account:</p>
                 <div class="quick-login">
-                    <button type="button" class="quick-btn" onclick="fillAccount('admin')">Admin</button>
-                    <button type="button" class="quick-btn" onclick="fillAccount('staff')">Staff</button>
-                    <button type="button" class="quick-btn" onclick="fillAccount('user')">User</button>
-                    <button type="button" class="quick-btn" onclick="fillAccount('default')">Default</button>
+                    <a href="Admin.html"><button type="button" class="quick-btn">Admin</button></a>
+                    <a href="User.html"><button type="button" class="quick-btn">User</button></a>
                 </div>
 
                 <button type="submit" class="auth-submit-btn">Log In</button>
@@ -125,9 +123,9 @@
     </div>
 </div>
 
-<footer class="footer">
-    <div class="footer-content">
-        <div class="footer-column">
+<footer class="Footer">
+    <div class="Footer-content">
+        <div class="Footer-column">
             <h3>Rye Fitness Center</h3>
             <p>Transform your body, transform your life.</p>
             <div class="social-links">
@@ -136,37 +134,35 @@
                 <a href="#">Twitter</a>
             </div>
         </div>
-        <div class="footer-column">
+        <div class="Footer-column">
             <h4>Quick Links</h4>
-            <a href="#">Home</a>
+            <a href="index.html">Home</a>
             <a href="Community.html">Community</a>
             <a href="Training.html">Get Started</a>
             <a href="Shop.html">Shop</a>
         </div>
-        <div class="footer-column">
+        <div class="Footer-column">
             <h4>Contact</h4>
             <p>Email: info@ryefitness.com</p>
             <p>Phone: (555) 123-4567</p>
             <p>Address: 123 Fitness Ave, Your City</p>
         </div>
-        <div class="footer-column">
+        <div class="Footer-column">
             <h4>Hours</h4>
             <p>Monday - Friday: 24/7</p>
             <p>Saturday - Sunday: 24/7</p>
             <p>We're always open!</p>
         </div>
     </div>
-    <div class="footer-bottom">
+    <div class="Footer-bottom">
         <p>&copy; 2026 Rye Fitness Center. All rights reserved.</p>
     </div>
 </footer>
 
 <script>
     var accounts = {
-        'default': { password: 'default123', name: 'Default Operator', role: 'Default', dashboard: 'dashboard-default.html' },
-        'admin':   { password: 'admin123',   name: 'Angela Reed',      role: 'Admin',   dashboard: 'dashboard-admin.html' },
-        'staff':   { password: 'staff123',   name: 'Lena Brooks',      role: 'Staff',   dashboard: 'dashboard-staff.html' },
-        'user':    { password: 'user123',    name: 'Mia Thompson',     role: 'User',    dashboard: 'dashboard-user.html' }
+        'User': { password: 'User123', name: 'Sata Andagi', role: 'User', dashboard: 'User.html' },
+        'Admin':   { password: 'Admin123',   name: 'Admin',      role: 'Admin',   dashboard: 'Admin.html' },
     };
 
     function switchTab(tab) {
@@ -181,11 +177,7 @@
         }
     }
 
-    function showMessage(id, text, type) {
-        var el = document.getElementById(id);
-        el.textContent = text;
-        el.className = 'auth-message ' + type + ' show';
-    }
+    
 
     function doRegister(e) {
         e.preventDefault();
@@ -217,30 +209,6 @@
         setTimeout(function() { switchTab('login'); }, 1500);
     }
 
-    function doLogin(e) {
-        e.preventDefault();
-        var username = document.getElementById('login-username').value.trim().toLowerCase();
-        var password = document.getElementById('login-password').value.trim();
-
-        if (accounts[username] && accounts[username].password === password) {
-            var acc = accounts[username];
-            localStorage.setItem('rye_session', JSON.stringify({ username: username, name: acc.name, role: acc.role }));
-            showMessage('login-message', 'Welcome back, ' + acc.name + '! Redirecting...', 'success');
-            setTimeout(function() { window.location.href = acc.dashboard; }, 1200);
-            return;
-        }
-
-        var users = JSON.parse(localStorage.getItem('rye_users') || '[]');
-        var user = users.find(function(u) { return u.email === username && u.password === password; });
-        if (user) {
-            localStorage.setItem('rye_session', JSON.stringify({ username: username, name: user.first + ' ' + user.last, role: 'Member' }));
-            showMessage('login-message', 'Welcome back, ' + user.first + '! Redirecting...', 'success');
-            setTimeout(function() { window.location.href = 'dashboard-user.html'; }, 1200);
-            return;
-        }
-
-        showMessage('login-message', 'Invalid username or password. Please try again.', 'error');
-    }
 
     function fillAccount(role) {
         document.getElementById('login-username').value = role;

@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Manage Users - Admin</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Montserrat', sans-serif; background-color: #f5f5f5; }
+
+        /* ── ADMIN LAYOUT ── */
+        .Admin-wrapper {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* ── SIDEBAR ── */
+        .Admin-sidebar {
+            width: 220px;
+            background: black;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            padding: 30px 0;
+            flex-shrink: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            z-index: 100;
+        }
+        .Admin-sidebar-logo {
+            padding: 0 25px 25px;
+            border-bottom: 1px solid #333;
+            margin-bottom: 20px;
+        }
+        .Admin-sidebar-logo h2 {
+            font-size: 18px;
+            font-weight: 900;
+            color: rgb(252, 195, 52);
+        }
+        .Admin-sidebar-logo p { font-size: 11px; color: #aaa; }
+
+        .Admin-nav-link {
+            display: block;
+            padding: 14px 25px;
+            color: #aaa;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.2s;
+            border-left: 3px solid transparent;
+        }
+        .Admin-nav-link:hover,
+        .Admin-nav-link.active {
+            background: #1a1a1a;
+            color: white;
+            border-left-color: rgb(252, 195, 52);
+        }
+        .Admin-nav-link span { margin-right: 10px; }
+
+        .Admin-sidebar-bottom {
+            margin-top: auto;
+            padding: 0 25px;
+        }
+        .Admin-logout-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #1a1a1a;
+            color: #aaa;
+            border: 1px solid #333;
+            font-size: 13px;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .Admin-logout-btn:hover { background: rgb(252, 195, 52); color: black; border-color: rgb(252, 195, 52); }
+
+        /* ── MAIN CONTENT ── */
+        .Admin-main {
+            margin-left: 220px;
+            flex: 1;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        /* ── PAGE TITLE ── */
+        .Admin-page-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid black;
+        }
+        .Admin-page-title-icon {
+            width: 45px;
+            height: 45px;
+            background: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .Admin-page-title h1 {
+            font-size: 36px;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+
+        /* ── STAT CARDS ── */
+        .Admin-stats-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+        .Admin-stat-card {
+            background: white;
+            border: 2px solid #ddd;
+            padding: 20px 25px;
+        }
+        .Admin-stat-card label {
+            display: block;
+            font-size: 10px;
+            font-weight: 700;
+            color: #888;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .Admin-stat-card h2 {
+            font-size: 36px;
+            font-weight: 900;
+            color: #111;
+        }
+
+        /* ── SEARCH + FILTERS ── */
+        .Admin-search-bar {
+            background: white;
+            border: 2px solid #ddd;
+            padding: 20px 25px;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .Admin-search-input {
+            flex: 1;
+            min-width: 200px;
+            padding: 12px 16px;
+            border: 1px solid #ccc;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            outline: none;
+        }
+        .Admin-search-input:focus { border-color: black; }
+        .Admin-filter-select {
+            padding: 12px 16px;
+            border: 1px solid #ccc;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            outline: none;
+            cursor: pointer;
+            background: white;
+        }
+        .Admin-add-btn {
+            padding: 12px 22px;
+            background: black;
+            color: white;
+            border: none;
+            font-size: 13px;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            cursor: pointer;
+            letter-spacing: 1px;
+            transition: background 0.2s;
+            white-space: nowrap;
+        }
+        .Admin-add-btn:hover { background: rgb(252, 195, 52); color: black; }
+
+        /* ── TABLE ── */
+        .Admin-table-wrapper {
+            background: white;
+            border: 2px solid #ddd;
+            overflow-x: auto;
+        }
+        .Admin-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .Admin-table thead tr {
+            background: black;
+            color: white;
+        }
+        .Admin-table th {
+            padding: 14px 16px;
+            font-size: 11px;
+            font-weight: 700;
+            text-align: left;
+            letter-spacing: 1px;
+        }
+        .Admin-table td {
+            padding: 14px 16px;
+            font-size: 13px;
+            border-bottom: 1px solid #f0f0f0;
+            color: #333;
+        }
+        .Admin-table tr:hover td { background: #fafafa; }
+        .Admin-table .User-id { font-size: 11px; color: #aaa; font-weight: 600; }
+        .Admin-table .User-name { font-weight: 700; color: #111; }
+
+        .Status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .Status-badge.active { background: black; color: white; }
+        .Status-badge.inactive { background: #eee; color: #888; border: 1px solid #ccc; }
+
+        .Table-action-btn {
+            padding: 6px 12px;
+            font-size: 11px;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            background: white;
+            margin-right: 5px;
+            transition: all 0.2s;
+        }
+        .Table-action-btn:hover { background: black; color: white; border-color: black; }
+
+        /* ── PAGINATION ── */
+        .Admin-pagination {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            border-top: 1px solid #eee;
+            font-size: 13px;
+            color: #888;
+        }
+        .Pagination-buttons {
+            display: flex;
+            gap: 5px;
+            align-items: center;
+        }
+        .Page-btn {
+            padding: 7px 13px;
+            border: 1px solid #ccc;
+            background: white;
+            font-size: 12px;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .Page-btn:hover, .Page-btn.active { background: black; color: white; border-color: black; }
+    </style>
+</head>
+<body>
+<div class="Admin-wrapper">
+
+    <!-- Sidebar -->
+    <div class="Admin-sidebar">
+        <div class="Admin-sidebar-logo">
+            <h2>RF ADMIN</h2>
+            <p>Rye Fitness Center</p>
+        </div>
+        <a href="Admin.html" class="Admin-nav-link active"><span>👥</span>Manage Users</a>
+        <a href="Admin-analytics.html" class="Admin-nav-link"><span>📊</span>Analytics</a>
+        <div class="Admin-sidebar-bottom">
+            <a href="index.html" class="Admin-logout-btn">⇠ Log Out</a>
+        </div>
+    </div>
+
+    <!-- Main -->
+    <div class="Admin-main">
+
+        <!-- Title -->
+        <div class="Admin-page-title">
+            <div class="Admin-page-title-icon">👥</div>
+            <h1>MANAGE USERS</h1>
+        </div>
+
+        <!-- Stats -->
+        <div class="Admin-stats-row">
+            <div class="Admin-stat-card">
+                <label>Total Members</label>
+                <h2>1,247</h2>
+            </div>
+            <div class="Admin-stat-card">
+                <label>Active Today</label>
+                <h2>156</h2>
+            </div>
+            <div class="Admin-stat-card">
+                <label>New This Month</label>
+                <h2>48</h2>
+            </div>
+            <div class="Admin-stat-card">
+                <label>Pending</label>
+                <h2>12</h2>
+            </div>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="Admin-search-bar">
+            <input class="Admin-search-input" type="text" placeholder="Search users...">
+            <select class="Admin-filter-select">
+                <option>All Plans</option>
+                <option>Classic</option>
+                <option>Black Card</option>
+            </select>
+            <select class="Admin-filter-select">
+                <option>All Status</option>
+                <option>Active</option>
+                <option>Inactive</option>
+            </select>
+            <button class="Admin-add-btn">+ ADD USER</button>
+        </div>
+
+        <!-- Table -->
+        <div class="Admin-table-wrapper">
+            <table class="Admin-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>NAME</th>
+                        <th>EMAIL</th>
+                        <th>PLAN</th>
+                        <th>STATUS</th>
+                        <th>JOINED</th>
+                        <th>ACTIONS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="User-id">RYE-1001</td>
+                        <td class="User-name">John Doe</td>
+                        <td>john@email.com</td>
+                        <td>Standard</td>
+                        <td><span class="Status-badge active">ACTIVE</span></td>
+                        <td>2026-01-15</td>
+                        <td>
+                            <button class="Table-action-btn">EDIT</button>
+                            <button class="Table-action-btn">VIEW</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="User-id">RYE-1002</td>
+                        <td class="User-name">Jane Smith</td>
+                        <td>jane@email.com</td>
+                        <td>Premium</td>
+                        <td><span class="Status-badge active">ACTIVE</span></td>
+                        <td>2026-02-10</td>
+                        <td>
+                            <button class="Table-action-btn">EDIT</button>
+                            <button class="Table-action-btn">VIEW</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="User-id">RYE-1003</td>
+                        <td class="User-name">Mike Johnson</td>
+                        <td>mike@email.com</td>
+                        <td>Basic</td>
+                        <td><span class="Status-badge inactive">INACTIVE</span></td>
+                        <td>2025-12-05</td>
+                        <td>
+                            <button class="Table-action-btn">EDIT</button>
+                            <button class="Table-action-btn">VIEW</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="User-id">RYE-1004</td>
+                        <td class="User-name">Sarah Williams</td>
+                        <td>sarah@email.com</td>
+                        <td>Standard</td>
+                        <td><span class="Status-badge active">ACTIVE</span></td>
+                        <td>2026-03-20</td>
+                        <td>
+                            <button class="Table-action-btn">EDIT</button>
+                            <button class="Table-action-btn">VIEW</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="User-id">RYE-1005</td>
+                        <td class="User-name">David Brown</td>
+                        <td>david@email.com</td>
+                        <td>Premium</td>
+                        <td><span class="Status-badge active">ACTIVE</span></td>
+                        <td>2026-01-28</td>
+                        <td>
+                            <button class="Table-action-btn">EDIT</button>
+                            <button class="Table-action-btn">VIEW</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="Admin-pagination">
+                <span>Showing 5 of 1,247 users</span>
+                <div class="Pagination-buttons">
+                    <button class="Page-btn">← PREV</button>
+                    <button class="Page-btn active">1</button>
+                    <button class="Page-btn">2</button>
+                    <button class="Page-btn">3</button>
+                    <button class="Page-btn">NEXT →</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

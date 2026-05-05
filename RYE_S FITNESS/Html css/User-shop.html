@@ -9,6 +9,7 @@
 </head>
 <body>
     <div class="Full-section">
+
         <nav class="Navbar">
             <div class="Gym">
                 <div class="Gym-logo">
@@ -21,13 +22,14 @@
             </div>
 
             <div class="Navbar-links">
-                <a class="Navbar-link" href="Aboutus.html">Why Join?</a>
-                <a class="Navbar-link" href="Training.html">Get Started</a>
-                <a class="Navbar-link" href="Shop.html">Merchandise</a>
+                <a class="Navbar-link" href="User-community.html">Community</a>
+                <a class="Navbar-link" href="User-Dashboard.html">Dashboard</a>
+                <a class="Navbar-link" href="User-shop.html">Merchandise</a>
+                <a class="Navbar-link" href="User-profile.html">Profile</a>
+                <a class="Navbar-link" href="User-membership.html">Membership</a>
             </div>
             <div class="Rightnav-buttons">
-                <a class="Rbutton-link" href="Login.html">JOIN NOW</a>
-                <a class="Rbutton-link" href="Membership.html">TRY US</a>
+                <a class="Rbutton-link" href="index.html">Log Out</a>
             </div>
         </nav>
         <div class="Shop-banner">
@@ -45,14 +47,14 @@
             <button class="Shop-filter-btn">Equipment</button>
             <button class="Shop-filter-btn">Drinks</button>
         </div>
-            
+        
         <div class="Shop-page">
             <div class="Shop-grid-wrapper">
                 <div class="Shop-grid" id="shop-grid">
         
                     <div class="Shop-card">
                         <span class="Shop-card-badge badge-new">NEW</span>
-                        <div class="Shop-card-image"><img src="../images/images (1).jfif" alt=""></div>
+                        <div class="Shop-card-image"><img src="../images/images (1).jfif" alt="Gym shirt"></div>
                         <div class="Shop-card-info">
                             <div class="Shop-card-name">Gym T-Shirt</div>
                             <div class="Shop-card-price">$25</div>
@@ -62,7 +64,7 @@
         
                     <div class="Shop-card">
                         <span class="Shop-card-badge badge-sale">SALE</span>
-                        <div class="Shop-card-image">🍶</div>
+                        <div class="Shop-card-image"><img src="../images/s-l1200 (1).jpg" alt="Gym water bottle"></div>
                         <div class="Shop-card-info">
                             <div class="Shop-card-name">Water Bottle</div>
                             <div class="Shop-card-price">$15 <span class="original-price">$22</span></div>
@@ -71,7 +73,7 @@
                     </div>
         
                     <div class="Shop-card">
-                        <div class="Shop-card-image">🎒</div>
+                        <div class="Shop-card-image"><img src="../images/PUMA-Fit-Duffel-Bag.avif" alt="Gym bag"></div>
                         <div class="Shop-card-info">
                             <div class="Shop-card-name">Gym Bag</div>
                             <div class="Shop-card-price">$45</div>
@@ -81,7 +83,7 @@
         
                     <div class="Shop-card">
                         <span class="Shop-card-badge badge-popular">POPULAR</span>
-                        <div class="Shop-card-image">🏋️</div>
+                        <div class="Shop-card-image"><img src="../images/images (3).jfif" alt="Resistance bands"></div>
                         <div class="Shop-card-info">
                             <div class="Shop-card-name">Resistance Bands</div>
                             <div class="Shop-card-price">$20</div>
@@ -90,7 +92,7 @@
                     </div>
         
                     <div class="Shop-card">
-                        <div class="Shop-card-image">🧥</div>
+                        <div class="Shop-card-image"><img src="../images/PDPA-OSW.HOODIE.BACK.MAKE_a577e0cc-fd8f-4c97-aff8-c8ff40846240.webp" alt="Hoodie"></div>
                         <div class="Shop-card-info">
                             <div class="Shop-card-name">Hoodie</div>
                             <div class="Shop-card-price">$50</div>
@@ -100,18 +102,18 @@
         
                     <div class="Shop-card" data-category="clothing">
                         <span class="Shop-card-badge badge-new">NEW</span>
-                        <div class="Shop-card-image">🧢</div>
+                        <div class="Shop-card-image"><img src="../images/sg-11134201-7rbnb-loc9j4mz19qi34.jfif" alt="cap"></div>
                         <div class="Shop-card-info">
                             <div class="Shop-card-name">Cap</div>
                             <div class="Shop-card-price">$18</div>
-                            <button class="Shop-add-btn" onclick="addToCart(this, 'Cap', 18)">ADD TO CART</button>
+                            <button class="Shop-add-btn">ADD TO CART</button>
                         </div>
                     </div>
         
                     <div class="Shop-card">
-                        <div class="Shop-card-image">🧤</div>
+                        <div class="Shop-card-image"><img src="../images/150902nr.jpg" alt="Gear"></div>
                         <div class="Shop-card-info">
-                            <div class="Shop-card-name">Lifting Gloves</div>
+                            <div class="Shop-card-name">Gear</div>
                             <div class="Shop-card-price">$22</div>
                             <button class="Shop-add-btn">ADD TO CART</button>
                         </div>
@@ -119,23 +121,41 @@
         
                     <div class="Shop-card">
                         <span class="Shop-card-badge badge-popular">POPULAR</span>
-                        <div class="Shop-card-image">⚡</div>
+                        <div class="Shop-card-image"><img src="../images/90.avif" alt="Whey Protein"></div>
                         <div class="Shop-card-info">
-                            <div class="Shop-card-name">Energy Drink Pack</div>
+                            <div class="Shop-card-name">Gold Standard® 100% Whey Protein</div>
                             <div class="Shop-card-price">$30</div>
                             <button class="Shop-add-btn">ADD TO CART</button>
                         </div>
                     </div>
         
                     <div class="Shop-card">
-                        <div class="Shop-card-image">📿</div>
+                        <div class="Shop-card-image"><img src="../images/06100220-ON_Micronized_Creatine Powder_300g-PH-FrontBottle.jpg" alt="Creatine Powder"></div>
                         <div class="Shop-card-info">
-                            <div class="Shop-card-name">Wrist Wraps</div>
+                            <div class="Shop-card-name">Micronized Creatine Powder</div>
                             <div class="Shop-card-price">$16</div>
                             <button class="Shop-add-btn">ADD TO CART</button>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="Shop-cart">
+                <div class="Shop-cart-title">
+                    Shopping Cart
+                    <span class="Shop-cart-count" id="cart-count">0</span>
+                </div>
+                <div class="Shop-cart-divider"></div>
+                <div id="cart-items-wrapper">
+                    <p class="Shop-cart-empty" id="cart-empty">0 items • $0.00</p>
+                    <div class="Shop-cart-items" id="cart-items"></div>
+                </div>
+                <div class="Shop-cart-divider"></div>
+                <div class="Shop-cart-total">
+                    <span>Total</span>
+                    <span id="cart-total">$0.00</span>
+                </div>
+                <button class="Shop-viewcart-btn">VIEW CART</button>
+                <button class="Shop-checkout-btn">CHECKOUT →</button>
             </div>
         </div>
         <section class="Getstarted-section">
@@ -168,18 +188,18 @@
             <div class="Footer-column">
                 <h3>Rye Fitness Center</h3>
                 <p>Transform your body, transform your life.</p>
-                <div class="social-links">
-                <a href="#">Facebook</a>
-                <a href="#">Instagram</a>
-                <a href="#">Twitter</a>
+                <div class="Social-links">
+                    <a href="#">Facebook</a>
+                    <a href="#">Instagram</a>
+                    <a href="#">Twitter</a>
                 </div>
             </div>
             <div class="Footer-column">
                 <h4>Quick Links</h4>
-                <a href="index.html">Home</a>
-                <a href="Community.html">Community</a>
-                <a href="Training.html">Get Started</a>
-                <a href="Shop.html">Shop</a>
+                <a href="User.html">Home</a>
+                <a href="User-community.html">Community</a>
+                <a href="User-membership.html">Membership</a>
+                <a href="User-shop.html">Shop</a>
             </div>
             <div class="Footer-column">
                 <h4>Contact</h4>

@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Analytics - Admin</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Montserrat', sans-serif; background-color: #f5f5f5; }
+
+        .Admin-wrapper { display: flex; min-height: 100vh; }
+
+        /* ── SIDEBAR (same as manage users) ── */
+        .Admin-sidebar {
+            width: 220px;
+            background: black;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            padding: 30px 0;
+            flex-shrink: 0;
+            position: fixed;
+            top: 0; left: 0;
+            height: 100vh;
+            z-index: 100;
+        }
+        .Admin-sidebar-logo {
+            padding: 0 25px 25px;
+            border-bottom: 1px solid #333;
+            margin-bottom: 20px;
+        }
+        .Admin-sidebar-logo h2 { font-size: 18px; font-weight: 900; color: rgb(252, 195, 52); }
+        .Admin-sidebar-logo p { font-size: 11px; color: #aaa; }
+        .Admin-nav-link {
+            display: block;
+            padding: 14px 25px;
+            color: #aaa;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.2s;
+            border-left: 3px solid transparent;
+        }
+        .Admin-nav-link:hover, .Admin-nav-link.active {
+            background: #1a1a1a;
+            color: white;
+            border-left-color: rgb(252, 195, 52);
+        }
+        .Admin-nav-link span { margin-right: 10px; }
+        .Admin-sidebar-bottom { margin-top: auto; padding: 0 25px; }
+        .Admin-logout-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #1a1a1a;
+            color: #aaa;
+            border: 1px solid #333;
+            font-size: 13px;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .Admin-logout-btn:hover { background: rgb(252, 195, 52); color: black; border-color: rgb(252, 195, 52); }
+
+        /* ── MAIN ── */
+        .Admin-main {
+            margin-left: 220px;
+            flex: 1;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        /* ── PAGE TITLE ── */
+        .Admin-page-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid black;
+        }
+        .Admin-page-title-icon {
+            width: 45px; height: 45px;
+            background: black;
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 20px; flex-shrink: 0;
+        }
+        .Admin-page-title h1 { font-size: 36px; font-weight: 900; letter-spacing: 2px; }
+
+        /* ── TOP STATS ── */
+        .Admin-stats-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+        .Admin-stat-card {
+            background: white;
+            border: 2px solid #ddd;
+            padding: 18px 22px;
+        }
+        .Admin-stat-card label {
+            display: block;
+            font-size: 10px;
+            font-weight: 700;
+            color: #888;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+        .Admin-stat-card h2 { font-size: 32px; font-weight: 900; color: #111; }
+        .Admin-stat-card .Stat-change {
+            font-size: 12px;
+            color: #2e8b57;
+            font-weight: 600;
+            margin-top: 4px;
+        }
+
+        /* ── GRID ROWS ── */
+        .Analytics-grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .Analytics-box {
+            background: white;
+            border: 2px solid #ddd;
+            padding: 25px;
+        }
+        .Analytics-box-title {
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        /* ── REVENUE TREND CHART ── */
+        .Chart-area {
+            height: 120px;
+            display: flex;
+            align-items: flex-end;
+            gap: 8px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 8px;
+        }
+        .Chart-bar {
+            flex: 1;
+            background: #eee;
+            border-radius: 3px 3px 0 0;
+            transition: background 0.2s;
+        }
+        .Chart-bar:hover { background: rgb(252, 195, 52); }
+        .Chart-bar.highlight { background: black; }
+        .Chart-labels {
+            display: flex;
+            gap: 8px;
+        }
+        .Chart-labels span {
+            flex: 1;
+            text-align: center;
+            font-size: 10px;
+            color: #aaa;
+            font-weight: 600;
+        }
+
+        /* ── MEMBERSHIP DISTRIBUTION ── */
+        .Membership-dist-item {
+            margin-bottom: 18px;
+        }
+        .Membership-dist-item:last-child { margin-bottom: 0; }
+        .Dist-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+        .Dist-header h4 { font-size: 13px; font-weight: 700; }
+        .Dist-header span { font-size: 12px; color: #888; }
+        .Dist-bar-bg {
+            width: 100%;
+            height: 28px;
+            background: #eee;
+            position: relative;
+            overflow: hidden;
+        }
+        .Dist-bar-fill {
+            height: 100%;
+            background: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+            font-weight: 700;
+            transition: width 0.4s ease;
+        }
+
+        /* ── PEAK HOURS CHART ── */
+        .Peak-chart-area {
+            height: 100px;
+            display: flex;
+            align-items: flex-end;
+            gap: 6px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 8px;
+        }
+        .Peak-bar {
+            flex: 1;
+            background: #eee;
+            border-radius: 3px 3px 0 0;
+        }
+        .Peak-bar.peak { background: black; }
+        .Peak-labels {
+            display: flex;
+            gap: 6px;
+        }
+        .Peak-labels span {
+            flex: 1;
+            text-align: center;
+            font-size: 9px;
+            color: #aaa;
+            font-weight: 600;
+        }
+        .Peak-subtitle {
+            text-align: center;
+            font-size: 11px;
+            color: #aaa;
+            margin-top: 5px;
+        }
+
+        /* ── TOP CLASSES ── */
+        .Top-class-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .Top-class-item:last-child { border-bottom: none; }
+        .Top-class-rank {
+            width: 28px;
+            height: 28px;
+            background: black;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+        .Top-class-name { flex: 1; font-size: 14px; font-weight: 600; }
+        .Top-class-count { font-size: 14px; font-weight: 700; color: #333; }
+
+        /* ── QUICK REPORTS ── */
+        .Quick-reports-box {
+            background: white;
+            border: 2px solid #ddd;
+            padding: 25px;
+        }
+        .Quick-reports-title {
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+        .Quick-reports-buttons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+        .Report-btn {
+            padding: 15px;
+            background: white;
+            border: 2px solid #ddd;
+            font-size: 13px;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.2s;
+        }
+        .Report-btn:hover { background: black; color: white; border-color: black; }
+    </style>
+</head>
+<body>
+<div class="Admin-wrapper">
+
+    <!-- Sidebar -->
+    <div class="Admin-sidebar">
+        <div class="Admin-sidebar-logo">
+            <h2>RF ADMIN</h2>
+            <p>Rye Fitness Center</p>
+        </div>
+        <a href="Admin.html" class="Admin-nav-link"><span>👥</span>Manage Users</a>
+        <a href="Admin-analytics.html" class="Admin-nav-link active"><span>📊</span>Analytics</a>
+        <div class="Admin-sidebar-bottom">
+            <a href="index.html" class="Admin-logout-btn">⇠ Log Out</a>
+        </div>
+    </div>
+
+    <!-- Main -->
+    <div class="Admin-main">
+
+        <!-- Title -->
+        <div class="Admin-page-title">
+            <div class="Admin-page-title-icon">📊</div>
+            <h1>ANALYTICS</h1>
+        </div>
+
+        <!-- Top Stats -->
+        <div class="Admin-stats-row">
+            <div class="Admin-stat-card">
+                <label>Monthly Revenue</label>
+                <h2>$45,680</h2>
+                <p class="Stat-change">↑ 12%</p>
+            </div>
+            <div class="Admin-stat-card">
+                <label>Active Members</label>
+                <h2>1,247</h2>
+                <p class="Stat-change">↑ 8%</p>
+            </div>
+            <div class="Admin-stat-card">
+                <label>Avg Attendance</label>
+                <h2>312<span style="font-size:16px;font-weight:600;color:#888;">/day</span></h2>
+                <p style="font-size:12px;color:#888;margin-top:4px;">stable</p>
+            </div>
+            <div class="Admin-stat-card">
+                <label>Retention Rate</label>
+                <h2>87%</h2>
+                <p class="Stat-change">↑ 3%</p>
+            </div>
+        </div>
+
+        <!-- Row 1: Revenue Trend + Membership Plans -->
+        <div class="Analytics-grid-2">
+
+            <!-- Revenue Trend -->
+            <div class="Analytics-box">
+                <div class="Analytics-box-title">Revenue Trend</div>
+                <div class="Chart-area">
+                    <div class="Chart-bar" style="height:50px;"></div>
+                    <div class="Chart-bar" style="height:65px;"></div>
+                    <div class="Chart-bar" style="height:45px;"></div>
+                    <div class="Chart-bar" style="height:80px;"></div>
+                    <div class="Chart-bar" style="height:60px;"></div>
+                    <div class="Chart-bar highlight" style="height:100px;"></div>
+                    <div class="Chart-bar" style="height:75px;"></div>
+                    <div class="Chart-bar" style="height:90px;"></div>
+                    <div class="Chart-bar" style="height:85px;"></div>
+                    <div class="Chart-bar" style="height:110px;"></div>
+                    <div class="Chart-bar" style="height:95px;"></div>
+                    <div class="Chart-bar" style="height:70px;"></div>
+                </div>
+                <div class="Chart-labels">
+                    <span>J</span><span>F</span><span>M</span><span>A</span>
+                    <span>M</span><span>J</span><span>J</span><span>A</span>
+                    <span>S</span><span>O</span><span>N</span><span>D</span>
+                </div>
+            </div>
+
+            <!-- Membership Plans Distribution -->
+            <div class="Analytics-box">
+                <div class="Analytics-box-title">Membership Plans</div>
+
+                <div class="Membership-dist-item">
+                    <div class="Dist-header">
+                        <h4>BASIC</h4>
+                        <span>387 members</span>
+                    </div>
+                    <div class="Dist-bar-bg">
+                        <div class="Dist-bar-fill" style="width:31%;">31%</div>
+                    </div>
+                </div>
+
+                <div class="Membership-dist-item">
+                    <div class="Dist-header">
+                        <h4>STANDARD</h4>
+                        <span>623 members</span>
+                    </div>
+                    <div class="Dist-bar-bg">
+                        <div class="Dist-bar-fill" style="width:50%;">50%</div>
+                    </div>
+                </div>
+
+                <div class="Membership-dist-item">
+                    <div class="Dist-header">
+                        <h4>PREMIUM</h4>
+                        <span>237 members</span>
+                    </div>
+                    <div class="Dist-bar-bg">
+                        <div class="Dist-bar-fill" style="width:19%;">19%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Row 2: Peak Hours + Top Classes -->
+        <div class="Analytics-grid-2">
+
+            <!-- Peak Hours -->
+            <div class="Analytics-box">
+                <div class="Analytics-box-title">Peak Hours</div>
+                <div class="Peak-chart-area">
+                    <div class="Peak-bar" style="height:25px;"></div>
+                    <div class="Peak-bar" style="height:40px;"></div>
+                    <div class="Peak-bar peak" style="height:85px;"></div>
+                    <div class="Peak-bar peak" style="height:90px;"></div>
+                    <div class="Peak-bar" style="height:55px;"></div>
+                    <div class="Peak-bar" style="height:45px;"></div>
+                    <div class="Peak-bar" style="height:35px;"></div>
+                    <div class="Peak-bar" style="height:50px;"></div>
+                    <div class="Peak-bar peak" style="height:80px;"></div>
+                    <div class="Peak-bar peak" style="height:95px;"></div>
+                    <div class="Peak-bar" style="height:60px;"></div>
+                    <div class="Peak-bar" style="height:30px;"></div>
+                </div>
+                <div class="Peak-labels">
+                    <span>6</span><span>7</span><span>8</span><span>9</span>
+                    <span>10</span><span>11</span><span>12</span><span>13</span>
+                    <span>14</span><span>15</span><span>16</span><span>17</span>
+                </div>
+                <p class="Peak-subtitle">Hours (6 AM – 6 PM)</p>
+            </div>
+
+            <!-- Top Classes -->
+            <div class="Analytics-box">
+                <div class="Analytics-box-title">Top Classes</div>
+                <div class="Top-class-item">
+                    <div class="Top-class-rank">1</div>
+                    <div class="Top-class-name">HIIT Training</div>
+                    <div class="Top-class-count">245</div>
+                </div>
+                <div class="Top-class-item">
+                    <div class="Top-class-rank">2</div>
+                    <div class="Top-class-name">Yoga Flow</div>
+                    <div class="Top-class-count">198</div>
+                </div>
+                <div class="Top-class-item">
+                    <div class="Top-class-rank">3</div>
+                    <div class="Top-class-name">Spin Class</div>
+                    <div class="Top-class-count">167</div>
+                </div>
+                <div class="Top-class-item">
+                    <div class="Top-class-rank">4</div>
+                    <div class="Top-class-name">Strength Training</div>
+                    <div class="Top-class-count">142</div>
+                </div>
+                <div class="Top-class-item">
+                    <div class="Top-class-rank">5</div>
+                    <div class="Top-class-name">Pilates</div>
+                    <div class="Top-class-count">128</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Reports -->
+        <div class="Quick-reports-box">
+            <div class="Quick-reports-title">Quick Reports</div>
+            <div class="Quick-reports-buttons">
+                <button class="Report-btn">📥 Export Data</button>
+                <button class="Report-btn">💰 Financial Report</button>
+                <button class="Report-btn">👤 Member Insights</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
