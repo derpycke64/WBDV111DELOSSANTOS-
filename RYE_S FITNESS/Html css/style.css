@@ -3794,3 +3794,60 @@ tr:nth-child(odd){
     text-align: center;
     color: #888;
 }
+@media (max-width: 768px) {
+    .Full-section {
+        padding-top: 60px;
+    }
+
+    .Navbar-links {
+        display: none;
+    }
+
+    .Benefits-grid {
+        grid-template-columns: 1fr !important;
+        padding: 0 20px;
+    }
+
+    .Comparison-highlight-grid {
+        flex-direction: column;
+    }
+
+    .Comparison-col {
+        width: 100%;
+    }
+
+    .History-section {
+        flex-direction: column;
+        margin: 20px;
+        gap: 20px;
+    }
+
+    .History-image {
+        width: 100%;
+    }
+
+    .Transformations-grid-gen {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .Transformation-card-gen {
+        width: 90%;
+    }
+
+    .Getstarted-description {
+        padding: 2% 10%;
+    }
+}
+
+@media (max-width: 480px) {
+    .Getstarted-button {
+        width: 150px;
+        min-height: 60px;
+    }
+
+    .Getstarted-button a {
+        padding: 15px 20px;
+        font-size: 14px;
+    }
+}
