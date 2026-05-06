@@ -63,7 +63,7 @@ window.doLogin = async function(event) {
 
     if (email === 'admin' && password === 'admin123') {
         alert('Admin login successful!')
-        window.location.href = 'admin.html'
+        window.location.href = 'Admin.html'
         return
     }
 
@@ -81,5 +81,5 @@ window.doLogin = async function(event) {
     console.log(data)
 
     // Redirect example
-    window.location.href = 'User.'
+    window.location.href = 'User.html'
 }
