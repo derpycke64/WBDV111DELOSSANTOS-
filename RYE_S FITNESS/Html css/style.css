@@ -668,7 +668,7 @@ nav{
     width: 100%;
     display: block;
     overflow: hidden;
-    background-image: url(../images/20260408-How-to-Buy-a-Gym.jpg);
+    background-image: url(images/20260408-How-to-Buy-a-Gym.jpg);
     background-repeat: no-repeat;
     background-position:bottom;
     background-size: cover;
@@ -1043,7 +1043,7 @@ nav{
     width: 600px;
     border-radius: 30px;
     height: 400px;
-    background-image: url(../images/premium_photo-1663051245152-0bca7225dc81.jfif);
+    background-image: url(images/premium_photo-1663051245152-0bca7225dc81.jfif);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -1120,7 +1120,7 @@ nav{
     width: 600px;
     border-radius: 30px;
     height: 400px;
-    background-image: url(../images/premium_photo-1663037007143-619bc153deaa.avif);
+    background-image: url(images/premium_photo-1663037007143-619bc153deaa.avif);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -1448,7 +1448,7 @@ tr:nth-child(odd){
     display: flex;
     flex-direction: row;
     position: relative;
-    background-image: url(../images/download.jfif);
+    background-image: url(images/download.jfif);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -1834,6 +1834,83 @@ tr:nth-child(odd){
     transition: all 0.3s;
 }
 .quick-btn:hover { border-color: #f5c200; color: #f5c200; }
+.TOS{
+    color: white;
+    margin-left: 5px;
+}
+.TOS:hover{
+    color: rgb(241, 174, 4);
+}
+
+.modal-overlay {
+    display: none; 
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+}
+
+.modal-content {
+    background-color: #ffffff;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 500px;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.modal-close {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #666;
+}
+
+.modal-close:hover {
+    color: #000;
+}
+
+.modal-body {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 15px;
+    padding-right: 5px;
+}
+.modal-body h3 {
+    font-size: 1.15rem;
+    color: #222;
+    margin-top: 20px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.modal-body p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #555;
+    margin-bottom: 12px;
+}
+
+.modal-body ul {
+    margin-bottom: 15px;
+    padding-left: 20px;
+}
+
+.modal-body li {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #555;
+    margin-bottom: 6px;
+}
 
 /* IMAGE PANEL */
 .auth-image {
@@ -2854,24 +2931,35 @@ tr:nth-child(odd){
     gap: 15px;
 }
 .Trainer-card-small {
+    width: 100%;
+    max-width: 450px; 
     border: 1px solid #eee;
-    border-radius: 10px;
+    border-radius: 12px;
     overflow: hidden;
     background: white;
-    transition: transform 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin: 0; 
 }
+
 .Trainer-card-small:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 .Trainer-card-img {
     width: 100%;
-    height: 120px;
+    height: 160px; 
     background-color: #333;
     overflow: hidden;
+    flex-shrink: 0;
+    display: block;
 }
+
 .Trainer-card-img img {
-    width: 100%; height: 100%; object-fit: cover;
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover;
+    object-position: 50% 20%;
+    display: block;
 }
 .Trainer-card-info {
     padding: 12px;
@@ -3713,6 +3801,23 @@ tr:nth-child(odd){
     border-color: black;
 }
 
+.bmi-button{
+    margin-top: 20px; 
+    padding: 10px 15px; 
+    font-size: 18px; 
+    background-color: black;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 10px
+}
+.bmi-button:hover{
+    background-color: rgb(252, 189, 32);
+    color: black;
+    transition: 0.1s ease;
+    border-color: #333;
+    box-shadow: 5px 3px 10px 1px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
 /* ── BOTTOM BUTTONS ── */
 .Profile-buttons {
     display: grid;

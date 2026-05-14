@@ -63,7 +63,7 @@ window.doLogin = async function(event) {
 
     if (email === 'admin' && password === 'admin123') {
         alert('Admin login successful!')
-        window.location.href = 'Admin.html'
+        window.location.href = 'admin.html'
         return
     }
 
